@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SVN-Ha-xUF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SVN-Ha-xUF">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -64,26 +64,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyS-DQ-P6b">
-                                <rect key="frame" x="159" y="629" width="75" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="btnTapped:" destination="SVN-Ha-xUF" eventType="touchUpInside" id="7Bj-Mw-5JR"/>
-                                </connections>
-                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="jbL-bm-Sha">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="280"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akU-Kf-dhY">
+                                <rect key="frame" x="0.0" y="195" width="393" height="657"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Daily Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmL-Ua-yzW">
+                                        <rect key="frame" x="139" y="27" width="116" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Streamline your daily routine and boost productivity with Daily Task" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAg-wB-XYf">
+                                        <rect key="frame" x="76" y="71" width="241" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.55294117647058827" green="0.54117647058823526" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="emailTf" translatesAutoresizingMaskIntoConstraints="NO" id="86q-if-Zf5">
+                                        <rect key="frame" x="27" y="136" width="340" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="passwordTf" translatesAutoresizingMaskIntoConstraints="NO" id="j9T-Sl-or6">
+                                        <rect key="frame" x="27" y="194" width="340" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eNs-Gc-4IO">
+                                        <rect key="frame" x="69" y="194" width="298" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7pH-Av-MqK">
+                                        <rect key="frame" x="69" y="136" width="298" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUt-Nk-17A">
+                                        <rect key="frame" x="82" y="306" width="230" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ab3-1a-5Xl"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="akU-Kf-dhY" firstAttribute="bottom" secondItem="ab3-1a-5Xl" secondAttribute="bottom" constant="34" id="cz6-Ax-pe1"/>
+                            <constraint firstItem="akU-Kf-dhY" firstAttribute="top" secondItem="ab3-1a-5Xl" secondAttribute="top" constant="136" id="fJ3-JW-IwC"/>
+                            <constraint firstItem="ab3-1a-5Xl" firstAttribute="trailing" secondItem="akU-Kf-dhY" secondAttribute="trailing" id="yNB-Yy-zwf"/>
+                            <constraint firstItem="akU-Kf-dhY" firstAttribute="leading" secondItem="ab3-1a-5Xl" secondAttribute="leading" id="ypK-ME-yjt"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailTf" destination="7pH-Av-MqK" id="t7W-AR-mM5"/>
+                        <outlet property="emailTfBackgroundImage" destination="86q-if-Zf5" id="hh7-Bn-KKo"/>
+                        <outlet property="passwordTf" destination="eNs-Gc-4IO" id="p0W-5d-Rjy"/>
+                        <outlet property="passwordTfBackgroundImage" destination="j9T-Sl-or6" id="iH4-CL-nG9"/>
+                        <outlet property="subView" destination="akU-Kf-dhY" id="LQJ-lt-tAk"/>
                         <segue destination="gHc-1x-SPU" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="rLk-W5-84Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4pZ-SV-b4e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="491" y="-1656"/>
+            <point key="canvasLocation" x="490.83969465648852" y="-1656.3380281690143"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9uw-1b-L2L">
@@ -107,6 +159,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BG" width="375" height="274"/>
+        <image name="Button" width="226" height="44"/>
+        <image name="emailTf" width="335" height="44"/>
+        <image name="passwordTf" width="335" height="44"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
