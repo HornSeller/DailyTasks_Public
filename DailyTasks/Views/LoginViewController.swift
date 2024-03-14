@@ -59,7 +59,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func btnTapped(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "loginSegue", sender: self)
+    @IBAction func signUpBtnTapped(_ sender: UIButton) {
+        self.navigationController?.pushViewController(SignUpViewController.makeSelf(), animated: true)
     }
 }
