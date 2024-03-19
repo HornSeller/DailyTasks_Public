@@ -21,6 +21,7 @@
 		041F23F42BA189DE000C90F6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F23F32BA189DE000C90F6 /* HomeViewModel.swift */; };
 		041F23F62BA18A48000C90F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F23F52BA18A48000C90F6 /* LoginViewController.swift */; };
 		04D78F912BA3567B00746DB7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D78F902BA3567B00746DB7 /* SignUpViewController.swift */; };
+		04FED26C2BA56ACC00FA95C2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FED26B2BA56ACC00FA95C2 /* LoginViewModel.swift */; };
 		5D737C5DD9513F243C4B90E0 /* Pods_DailyTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B61F7503165183C5630B94C /* Pods_DailyTasks.framework */; };
 		9AC41DE62BA3F75A000692A3 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC41DE52BA3F75A000692A3 /* SignUpViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		041F23F32BA189DE000C90F6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		041F23F52BA18A48000C90F6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		04D78F902BA3567B00746DB7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		04FED26B2BA56ACC00FA95C2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0B61F7503165183C5630B94C /* Pods_DailyTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ACCF909EA03E34917EF0EC6 /* Pods-DailyTasks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyTasks.release.xcconfig"; path = "Target Support Files/Pods-DailyTasks/Pods-DailyTasks.release.xcconfig"; sourceTree = "<group>"; };
 		9AC41DE52BA3F75A000692A3 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -128,7 +130,11 @@
 			isa = PBXGroup;
 			children = (
 				041F23F32BA189DE000C90F6 /* HomeViewModel.swift */,
+<<<<<<< Updated upstream
 				9AC41DE52BA3F75A000692A3 /* SignUpViewModel.swift */,
+=======
+				04FED26B2BA56ACC00FA95C2 /* LoginViewModel.swift */,
+>>>>>>> Stashed changes
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 			files = (
 				041F23F62BA18A48000C90F6 /* LoginViewController.swift in Sources */,
 				041F23EC2BA18891000C90F6 /* CalendarViewController.swift in Sources */,
+				04FED26C2BA56ACC00FA95C2 /* LoginViewModel.swift in Sources */,
 				041F23CE2BA16F3D000C90F6 /* AppDelegate.swift in Sources */,
 				041F23D02BA16F3D000C90F6 /* SceneDelegate.swift in Sources */,
 				04D78F912BA3567B00746DB7 /* SignUpViewController.swift in Sources */,

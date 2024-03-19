@@ -126,6 +126,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="Button"/>
+                                        <connections>
+                                            <action selector="signInBtnTapped:" destination="SVN-Ha-xUF" eventType="touchUpInside" id="jA8-ML-cYt"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Devider" translatesAutoresizingMaskIntoConstraints="NO" id="I1d-7f-JDK">
                                         <rect key="frame" x="134" y="382" width="125" height="20"/>
