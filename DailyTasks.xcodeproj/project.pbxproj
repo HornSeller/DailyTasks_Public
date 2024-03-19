@@ -22,6 +22,7 @@
 		041F23F62BA18A48000C90F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F23F52BA18A48000C90F6 /* LoginViewController.swift */; };
 		04D78F912BA3567B00746DB7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D78F902BA3567B00746DB7 /* SignUpViewController.swift */; };
 		5D737C5DD9513F243C4B90E0 /* Pods_DailyTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B61F7503165183C5630B94C /* Pods_DailyTasks.framework */; };
+		9AC41DE62BA3F75A000692A3 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC41DE52BA3F75A000692A3 /* SignUpViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		04D78F902BA3567B00746DB7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0B61F7503165183C5630B94C /* Pods_DailyTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ACCF909EA03E34917EF0EC6 /* Pods-DailyTasks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyTasks.release.xcconfig"; path = "Target Support Files/Pods-DailyTasks/Pods-DailyTasks.release.xcconfig"; sourceTree = "<group>"; };
+		9AC41DE52BA3F75A000692A3 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		A61E06D98EC58C9336147207 /* Pods-DailyTasks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyTasks.debug.xcconfig"; path = "Target Support Files/Pods-DailyTasks/Pods-DailyTasks.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				041F23F32BA189DE000C90F6 /* HomeViewModel.swift */,
+				9AC41DE52BA3F75A000692A3 /* SignUpViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				041F23EA2BA18883000C90F6 /* HomeViewController.swift in Sources */,
 				041F23F02BA188C1000C90F6 /* Task.swift in Sources */,
 				041F23EE2BA188A0000C90F6 /* AnalysisViewController.swift in Sources */,
+				9AC41DE62BA3F75A000692A3 /* SignUpViewModel.swift in Sources */,
 				041F23F22BA188D9000C90F6 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

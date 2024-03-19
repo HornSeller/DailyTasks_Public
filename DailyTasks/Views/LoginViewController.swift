@@ -30,9 +30,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         subView.addGestureRecognizer(tapGesture)
         
-        FirebaseAuth.Auth.auth().createUser(withEmail: "b@gmail.com", password: "abcxyz") { (result, error) in
-            print(error)
-        }
+//        FirebaseAuth.Auth.auth().createUser(withEmail: "duc.nm05102@gmail.com", password: "abcxyz") { (result, error) in
+//            print(error)
+//        }
+        
     }
     
     @objc func hideKeyboard() {
