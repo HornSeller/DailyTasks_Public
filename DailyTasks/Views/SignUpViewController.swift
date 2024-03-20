@@ -42,7 +42,11 @@ class SignUpViewController: UIViewController {
                 return
             }
             
-            signUpViewModel.createUser(email: email, password: password, confirmPassword: confirmPassword) { [self] authResult in
+            signUpViewModel.email = email
+            signUpViewModel.password = password
+            signUpViewModel.confirmPassword = confirmPassword
+            
+            signUpViewModel.createUser() { [self] authResult in
                 switch authResult {
                 case .failure(let error as NSError):
                     switch error.code {
