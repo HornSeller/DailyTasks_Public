@@ -17,9 +17,14 @@
 		041F23EC2BA18891000C90F6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F23EB2BA18891000C90F6 /* CalendarViewController.swift */; };
 		041F23EE2BA188A0000C90F6 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F23ED2BA188A0000C90F6 /* AnalysisViewController.swift */; };
 		041F23F02BA188C1000C90F6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F23EF2BA188C1000C90F6 /* Task.swift */; };
-		041F23F22BA188D9000C90F6 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F23F12BA188D9000C90F6 /* Category.swift */; };
 		041F23F42BA189DE000C90F6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F23F32BA189DE000C90F6 /* HomeViewModel.swift */; };
 		041F23F62BA18A48000C90F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F23F52BA18A48000C90F6 /* LoginViewController.swift */; };
+		042F10A42BC7F3350022C9B8 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F10A32BC7F3350022C9B8 /* AddTaskViewController.swift */; };
+		042F10A72BC91E500022C9B8 /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F10A62BC91E500022C9B8 /* AddTaskViewModel.swift */; };
+		048EB2502BC6EAE500A53A34 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048EB24E2BC6EAE500A53A34 /* HomeCollectionViewCell.swift */; };
+		048EB2512BC6EAE500A53A34 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048EB24F2BC6EAE500A53A34 /* HomeCollectionViewCell.xib */; };
+		048EB2552BC6F6C600A53A34 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048EB2532BC6F6C600A53A34 /* HomeTableViewCell.swift */; };
+		048EB2562BC6F6C600A53A34 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048EB2542BC6F6C600A53A34 /* HomeTableViewCell.xib */; };
 		04D78F912BA3567B00746DB7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D78F902BA3567B00746DB7 /* SignUpViewController.swift */; };
 		04FED26E2BA94A2A00FA95C2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FED26D2BA94A2A00FA95C2 /* LoginViewModel.swift */; };
 		04FED2702BA94A7900FA95C2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FED26F2BA94A7900FA95C2 /* Service.swift */; };
@@ -40,9 +45,14 @@
 		041F23EB2BA18891000C90F6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		041F23ED2BA188A0000C90F6 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		041F23EF2BA188C1000C90F6 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		041F23F12BA188D9000C90F6 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		041F23F32BA189DE000C90F6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		041F23F52BA18A48000C90F6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		042F10A32BC7F3350022C9B8 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		042F10A62BC91E500022C9B8 /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
+		048EB24E2BC6EAE500A53A34 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		048EB24F2BC6EAE500A53A34 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		048EB2532BC6F6C600A53A34 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		048EB2542BC6F6C600A53A34 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		04D78F902BA3567B00746DB7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		04FED26D2BA94A2A00FA95C2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		04FED26F2BA94A7900FA95C2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -111,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				041F23EF2BA188C1000C90F6 /* Task.swift */,
-				041F23F12BA188D9000C90F6 /* Category.swift */,
 				04FED26F2BA94A7900FA95C2 /* Service.swift */,
 			);
 			path = Models;
@@ -120,11 +129,9 @@
 		041F23E72BA1884F000C90F6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				041F23F52BA18A48000C90F6 /* LoginViewController.swift */,
-				04D78F902BA3567B00746DB7 /* SignUpViewController.swift */,
-				041F23E92BA18883000C90F6 /* HomeViewController.swift */,
-				041F23EB2BA18891000C90F6 /* CalendarViewController.swift */,
-				041F23ED2BA188A0000C90F6 /* AnalysisViewController.swift */,
+				042F10A52BC8E3230022C9B8 /* ViewControllers */,
+				048EB2522BC6F6B200A53A34 /* TableViews */,
+				048EB24D2BC6EAB200A53A34 /* CollectionViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,8 +142,40 @@
 				041F23F32BA189DE000C90F6 /* HomeViewModel.swift */,
 				9AC41DE52BA3F75A000692A3 /* SignUpViewModel.swift */,
 				04FED26D2BA94A2A00FA95C2 /* LoginViewModel.swift */,
+				042F10A62BC91E500022C9B8 /* AddTaskViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		042F10A52BC8E3230022C9B8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				041F23F52BA18A48000C90F6 /* LoginViewController.swift */,
+				04D78F902BA3567B00746DB7 /* SignUpViewController.swift */,
+				041F23E92BA18883000C90F6 /* HomeViewController.swift */,
+				041F23EB2BA18891000C90F6 /* CalendarViewController.swift */,
+				041F23ED2BA188A0000C90F6 /* AnalysisViewController.swift */,
+				042F10A32BC7F3350022C9B8 /* AddTaskViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		048EB24D2BC6EAB200A53A34 /* CollectionViews */ = {
+			isa = PBXGroup;
+			children = (
+				048EB24E2BC6EAE500A53A34 /* HomeCollectionViewCell.swift */,
+				048EB24F2BC6EAE500A53A34 /* HomeCollectionViewCell.xib */,
+			);
+			path = CollectionViews;
+			sourceTree = "<group>";
+		};
+		048EB2522BC6F6B200A53A34 /* TableViews */ = {
+			isa = PBXGroup;
+			children = (
+				048EB2532BC6F6C600A53A34 /* HomeTableViewCell.swift */,
+				048EB2542BC6F6C600A53A34 /* HomeTableViewCell.xib */,
+			);
+			path = TableViews;
 			sourceTree = "<group>";
 		};
 		7D5E9D8A4C5E892A1C7A7F88 /* Frameworks */ = {
@@ -216,9 +255,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048EB2512BC6EAE500A53A34 /* HomeCollectionViewCell.xib in Resources */,
 				041F23DA2BA16F40000C90F6 /* LaunchScreen.storyboard in Resources */,
 				041F23E52BA17FEB000C90F6 /* GoogleService-Info.plist in Resources */,
 				041F23D72BA16F3F000C90F6 /* Assets.xcassets in Resources */,
+				048EB2562BC6F6C600A53A34 /* HomeTableViewCell.xib in Resources */,
 				041F23D52BA16F3D000C90F6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,15 +317,18 @@
 				04FED2702BA94A7900FA95C2 /* Service.swift in Sources */,
 				041F23EC2BA18891000C90F6 /* CalendarViewController.swift in Sources */,
 				041F23CE2BA16F3D000C90F6 /* AppDelegate.swift in Sources */,
+				042F10A42BC7F3350022C9B8 /* AddTaskViewController.swift in Sources */,
 				041F23D02BA16F3D000C90F6 /* SceneDelegate.swift in Sources */,
 				04D78F912BA3567B00746DB7 /* SignUpViewController.swift in Sources */,
+				048EB2552BC6F6C600A53A34 /* HomeTableViewCell.swift in Sources */,
 				041F23F42BA189DE000C90F6 /* HomeViewModel.swift in Sources */,
+				042F10A72BC91E500022C9B8 /* AddTaskViewModel.swift in Sources */,
+				048EB2502BC6EAE500A53A34 /* HomeCollectionViewCell.swift in Sources */,
 				041F23EA2BA18883000C90F6 /* HomeViewController.swift in Sources */,
 				041F23F02BA188C1000C90F6 /* Task.swift in Sources */,
 				04FED26E2BA94A2A00FA95C2 /* LoginViewModel.swift in Sources */,
 				041F23EE2BA188A0000C90F6 /* AnalysisViewController.swift in Sources */,
 				9AC41DE62BA3F75A000692A3 /* SignUpViewModel.swift in Sources */,
-				041F23F22BA188D9000C90F6 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

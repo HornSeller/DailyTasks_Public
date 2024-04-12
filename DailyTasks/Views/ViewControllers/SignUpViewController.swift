@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
     
@@ -17,15 +18,16 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTfBackgroundImage: UIImageView!
     @IBOutlet weak var confirmPasswordTfBackgroundImage: UIImageView!
     
-    var signUpViewModel = SignUpViewModel()
+    private let signUpViewModel = SignUpViewModel()
+    private let database = Database.database().reference()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         emailTf.delegate = self
         passwordTf.delegate = self
         confirmPasswordTf.delegate = self
-        
+                
         let tapGetsure = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         
         view.addGestureRecognizer(tapGetsure)
@@ -64,6 +66,29 @@ class SignUpViewController: UIViewController {
                         presentAlert(title: "Error", message: "Unknown error", actionTitle: "Try again")
                     }
                 case .success(let authResult):
+                    let user = authResult.user
+                    var sampleTasks: [Task] = []
+                    sampleTasks.append(Task(title: "test", description: "test", startTime: "24 Mar, 2024 00:00", endTime: "24 Mar, 2024 00:00", priority: .high, category: .none, isCompleted: false))
+                    let object: [String: Any] = [
+                        "email": email,
+                        "tasks": sampleTasks.map { [
+                            "id": $0.id,
+                            "title": $0.title,
+                            "description": $0.description,
+                            "startTime": $0.startTime.description,
+                            "endTime": $0.endTime.description,
+                            "priority": $0.priority.rawValue,
+                            "category": $0.category.rawValue,
+                            "isCompleted": String($0.isCompleted)
+                        ] }
+                    ]
+                    database.child("users").child(user.uid).setValue(object) { (error, ref) in
+                        if let error = error {
+                            print("Error saving user data: \(error.localizedDescription)")
+                        } else {
+                            print("User data saved successfully!")
+                        }
+                    }
                     presentAlert(title: "Registration successful", message: "", actionTitle: "OK")
                     print(authResult)
                 }

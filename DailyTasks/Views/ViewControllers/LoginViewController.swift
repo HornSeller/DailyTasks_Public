@@ -34,10 +34,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         if FirebaseAuth.Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "loginSegue", sender: self)
+            print(Auth.auth().currentUser?.uid)
         }
         
         do {
-            try FirebaseAuth.Auth.auth().signOut()
+            //try FirebaseAuth.Auth.auth().signOut()
         } catch {
             
         }
