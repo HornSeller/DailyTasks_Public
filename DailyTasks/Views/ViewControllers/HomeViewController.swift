@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userButton: UIButton!
@@ -19,12 +19,23 @@ class HomeViewController: UIViewController {
     private let homeViewModel = HomeViewModel()
     private var tableData: [Task] = []
     private var collectionData: [Task] = []
-    let dateFormatter = DateFormatter()
-
+    private let database = Database.database().reference()
+    private let dateFormatter = DateFormatter()
+    private let currentUserUid = Auth.auth().currentUser?.uid
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
+        
+        database.child("users").child(currentUserUid!).observeSingleEvent(of: .value) { snapshot in
+            guard let userData = snapshot.value as? [String: Any] else {
+                print("Error: Unable to fetch user data")
+                return
+            }
+            
+            self.emailLabel.text = userData["email"] as? String ?? ""
+        }
         
         getCollectionAndTableViewData()
         
@@ -57,19 +68,29 @@ class HomeViewController: UIViewController {
         
         tableView.register(UINib(nibName: "HomeTableViewCell", bundle: .main), forCellReuseIdentifier: "tableCell")
         tableView.rowHeight = 0.21374 * view.frame.width - 1
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(taskDidAddNotification), name: Notification.Name("TaskDidAdd"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getCollectionAndTableViewData()
     }
     
     func getCollectionAndTableViewData() {
-        if let currentUserUid = Auth.auth().currentUser {
-            homeViewModel.fetchUserData(uid: currentUserUid.uid) { [self] email, tasksData in
-                emailLabel.text = email
+        if let currentUserUid = currentUserUid {
+            homeViewModel.fetchUserData(uid: currentUserUid) { [self] children in
                 var tasks: [Task] = []
-                for taskData in tasksData {
-                    if let id = taskData["id"] as? String,
+                for child in children {
+                    if let taskData = child.value as? [String: Any],
+                       let id = taskData["id"] as? String,
                        let title = taskData["title"] as? String,
                        let description = taskData["description"] as? String,
-                       let startTime = taskData["startTime"] as? String,
-                       let endTime = taskData["endTime"] as? String,
+                       let startTimeString = taskData["startTime"] as? String,
+                       let startTime = dateFormatter.date(from: startTimeString),
+                       let endTimeString = taskData["endTime"] as? String,
+                       let endTime = dateFormatter.date(from: endTimeString),
                        let priorityRawValue = taskData["priority"] as? String,
                        let priority = Task.Priority(rawValue: priorityRawValue),
                        let categoryRawValue = taskData["category"] as? String,
@@ -77,24 +98,57 @@ class HomeViewController: UIViewController {
                        let isCompletedString = taskData["isCompleted"] as? String,
                        let isCompleted = Bool(isCompletedString) {
                         let task = Task(id: id, title: title, description: description, startTime: startTime, endTime: endTime, priority: priority, category: category, isCompleted: isCompleted)
-                        print(task)
                         tasks.append(task)
                     }
                 }
+                print(tasks[0].title)
                 tasks.remove(at: 0)
                 tableData = tasks
                 tableView.reloadData()
                 let sortedTasks = tasks.sorted { (task1, task2) -> Bool in
-                    return dateFormatter.date(from: task1.endTime)! < dateFormatter.date(from: task1.endTime)!
+                    return task1.endTime < task2.endTime
                 }
                 collectionData = sortedTasks
                 collectionView.reloadData()
+                
             }
+            //{ [self] email, tasksData in
+            //                emailLabel.text = email
+            //                var tasks: [Task] = []
+            //                for taskData in tasksData {
+            //                    if let id = taskData["id"] as? String,
+            //                       let title = taskData["title"] as? String,
+            //                       let description = taskData["description"] as? String,
+            //                       let startTime = taskData["startTime"] as? String,
+            //                       let endTime = taskData["endTime"] as? String,
+            //                       let priorityRawValue = taskData["priority"] as? String,
+            //                       let priority = Task.Priority(rawValue: priorityRawValue),
+            //                       let categoryRawValue = taskData["category"] as? String,
+            //                       let category = Task.Category(rawValue: categoryRawValue),
+            //                       let isCompletedString = taskData["isCompleted"] as? String,
+            //                       let isCompleted = Bool(isCompletedString) {
+            //                        let task = Task(id: id, title: title, description: description, startTime: startTime, endTime: endTime, priority: priority, category: category, isCompleted: isCompleted)
+            //                        print(task)
+            //                        tasks.append(task)
+            //                    }
+            //                }
+//                            tasks.remove(at: 0)
+//                            tableData = tasks
+//                            tableView.reloadData()
+//                            let sortedTasks = tasks.sorted { (task1, task2) -> Bool in
+//                                return dateFormatter.date(from: task1.endTime)! < dateFormatter.date(from: task1.endTime)!
+//                            }
+//                            collectionData = sortedTasks
+//                            collectionView.reloadData()
         }
     }
     
     @IBAction func addTaskButtonTouchUpInside(_sender: UIButton) {
         self.present(AddTaskViewController.makeSelf(), animated: true)
+    }
+    
+    @objc func taskDidAddNotification() {
+        getCollectionAndTableViewData()
     }
 }
 

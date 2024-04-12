@@ -11,18 +11,17 @@ import Firebase
 final class HomeViewModel {
     
     private let database = Database.database().reference()
+    private let dateFormatter = DateFormatter()
     
-    func fetchUserData(uid: String, completion: @escaping (String, [[String: Any]]) -> Void) {
-        database.child("users").child(uid).observeSingleEvent(of: .value) { snapshot in
-            guard let userData = snapshot.value as? [String: Any] else {
-                print("Error: Unable to fetch user data")
-                return
+    func fetchUserData(uid: String, completion: @escaping ([DataSnapshot]) -> Void) {
+        dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
+        var children: [DataSnapshot] = []
+        database.child("users").child(uid).child("tasks").observeSingleEvent(of: .value) { snapshot in
+            for child in snapshot.children {
+                children.append(child as! DataSnapshot)
             }
-            
-            let email = userData["email"] as? String ?? ""
-            let tasks = userData["tasks"] as? [[String: Any]] ?? []
-            
-            completion(email, tasks)
+            completion(children)
         }
     }
 }
+

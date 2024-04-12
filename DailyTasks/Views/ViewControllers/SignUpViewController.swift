@@ -20,10 +20,13 @@ class SignUpViewController: UIViewController {
     
     private let signUpViewModel = SignUpViewModel()
     private let database = Database.database().reference()
+    private let dateFormatter = DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
+        
         emailTf.delegate = self
         passwordTf.delegate = self
         confirmPasswordTf.delegate = self
@@ -68,7 +71,7 @@ class SignUpViewController: UIViewController {
                 case .success(let authResult):
                     let user = authResult.user
                     var sampleTasks: [Task] = []
-                    sampleTasks.append(Task(title: "test", description: "test", startTime: "24 Mar, 2024 00:00", endTime: "24 Mar, 2024 00:00", priority: .high, category: .none, isCompleted: false))
+                    sampleTasks.append(Task(title: "test", description: "test", startTime: dateFormatter.date(from: "24 Mar, 2024 00:00")!, endTime: dateFormatter.date(from: "24 Mar, 2024 00:00")!, priority: .high, category: .none, isCompleted: false))
                     let object: [String: Any] = [
                         "email": email,
                         "tasks": sampleTasks.map { [

@@ -11,8 +11,8 @@ struct Task {
     let id: String
     var title: String
     var description: String
-    var startTime: String
-    var endTime: String
+    var startTime: Date
+    var endTime: Date
     var priority: Priority
     var category: Category
     var isCompleted: Bool
@@ -30,7 +30,7 @@ struct Task {
         case none = "None"
     }
 
-    init(title: String, description: String, startTime: String, endTime: String, priority: Priority, category: Category, isCompleted: Bool) {
+    init(title: String, description: String, startTime: Date, endTime: Date, priority: Priority, category: Category, isCompleted: Bool) {
         self.id = UUID().uuidString
         self.title = title
         self.description = description
@@ -41,7 +41,7 @@ struct Task {
         self.isCompleted = isCompleted
     }
     
-    init(id: String, title: String, description: String, startTime: String, endTime: String, priority: Priority, category: Category, isCompleted: Bool) {
+    init(id: String, title: String, description: String, startTime: Date, endTime: Date, priority: Priority, category: Category, isCompleted: Bool) {
         self.id = id
         self.title = title
         self.description = description

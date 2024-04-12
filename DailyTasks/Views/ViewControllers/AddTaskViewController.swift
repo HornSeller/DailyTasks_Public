@@ -60,6 +60,12 @@ class AddTaskViewController: UIViewController {
         endTimeDatePicker.addTarget(self, action: #selector(endTimeDatePickerValueChanged), for: .valueChanged)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.post(name: Notification.Name("TaskDidAdd"), object: nil)
+    }
+    
     @IBAction func addTaskButtonTouchUpInside() {
         if nameTextField.text!.isEmpty ||
            categoryTextField.text!.isEmpty ||
@@ -70,6 +76,7 @@ class AddTaskViewController: UIViewController {
             return
         }
         
+        addTaskViewModel.id = UUID().uuidString
         addTaskViewModel.title = nameTextField.text ?? ""
         addTaskViewModel.category = categoryTextField.text ?? ""
         addTaskViewModel.priority = priorityTextField.text ?? ""
