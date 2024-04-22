@@ -12,8 +12,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tagImageView: UIImageView!
     @IBOutlet weak var arrowRightImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var endTimeLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var subView: UIView!
 
     override func awakeFromNib() {

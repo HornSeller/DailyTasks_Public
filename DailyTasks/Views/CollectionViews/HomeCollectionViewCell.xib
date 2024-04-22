@@ -63,10 +63,10 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="arrowRightImageView" destination="1Kc-1Y-bHf" id="cBy-Fc-YUd"/>
-                <outlet property="dateLabel" destination="l2M-uY-B3b" id="KzD-Q7-75q"/>
+                <outlet property="endDateLabel" destination="l2M-uY-B3b" id="dvq-P5-ToL"/>
+                <outlet property="endTimeLabel" destination="Hxi-93-ExR" id="A0W-OL-sJv"/>
                 <outlet property="subView" destination="Fq7-wf-XeY" id="chR-Dx-uiV"/>
                 <outlet property="tagImageView" destination="FIS-5f-YAO" id="jxy-oB-YVx"/>
-                <outlet property="timeLabel" destination="Hxi-93-ExR" id="vja-6D-wIg"/>
                 <outlet property="titleLabel" destination="veH-XY-4m1" id="46C-Y5-g7C"/>
             </connections>
             <point key="canvasLocation" x="114.50381679389312" y="-22.535211267605636"/>

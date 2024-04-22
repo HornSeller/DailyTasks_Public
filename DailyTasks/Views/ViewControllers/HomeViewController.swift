@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
             self.emailLabel.text = userData["email"] as? String ?? ""
         }
         
-        getCollectionAndTableViewData()
+        //getCollectionAndTableViewData()
         
         userButton.showsMenuAsPrimaryAction = true
         userButton.menu = UIMenu(title: "", options: .displayInline, children: [
@@ -76,6 +76,13 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         getCollectionAndTableViewData()
+        print("viewWillappear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        print("viewDidDisappear")
     }
     
     func getCollectionAndTableViewData() {
@@ -101,7 +108,7 @@ class HomeViewController: UIViewController {
                         tasks.append(task)
                     }
                 }
-                print(tasks[0].title)
+                //print(tasks[0].title)
                 tasks.remove(at: 0)
                 tableData = tasks
                 tableView.reloadData()
@@ -112,39 +119,11 @@ class HomeViewController: UIViewController {
                 collectionView.reloadData()
                 
             }
-            //{ [self] email, tasksData in
-            //                emailLabel.text = email
-            //                var tasks: [Task] = []
-            //                for taskData in tasksData {
-            //                    if let id = taskData["id"] as? String,
-            //                       let title = taskData["title"] as? String,
-            //                       let description = taskData["description"] as? String,
-            //                       let startTime = taskData["startTime"] as? String,
-            //                       let endTime = taskData["endTime"] as? String,
-            //                       let priorityRawValue = taskData["priority"] as? String,
-            //                       let priority = Task.Priority(rawValue: priorityRawValue),
-            //                       let categoryRawValue = taskData["category"] as? String,
-            //                       let category = Task.Category(rawValue: categoryRawValue),
-            //                       let isCompletedString = taskData["isCompleted"] as? String,
-            //                       let isCompleted = Bool(isCompletedString) {
-            //                        let task = Task(id: id, title: title, description: description, startTime: startTime, endTime: endTime, priority: priority, category: category, isCompleted: isCompleted)
-            //                        print(task)
-            //                        tasks.append(task)
-            //                    }
-            //                }
-//                            tasks.remove(at: 0)
-//                            tableData = tasks
-//                            tableView.reloadData()
-//                            let sortedTasks = tasks.sorted { (task1, task2) -> Bool in
-//                                return dateFormatter.date(from: task1.endTime)! < dateFormatter.date(from: task1.endTime)!
-//                            }
-//                            collectionData = sortedTasks
-//                            collectionView.reloadData()
         }
     }
     
     @IBAction func addTaskButtonTouchUpInside(_sender: UIButton) {
-        self.present(AddTaskViewController.makeSelf(), animated: true)
+        present(AddTaskViewController.makeSelf(), animated: true)
     }
     
     @objc func taskDidAddNotification() {
@@ -160,6 +139,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! HomeCollectionViewCell
+        cell.titleLabel.text = collectionData[indexPath.row].title
+        dateFormatter.dateFormat = "HH:mm"
+        cell.endTimeLabel.text = "Time: \(dateFormatter.string(from: collectionData[indexPath.row].endTime))"
+        dateFormatter.dateFormat = "dd MMM, yyyy"
+        cell.endDateLabel.text = "Date: \(dateFormatter.string(from: collectionData[indexPath.row].endTime))"
+        dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
         
         return cell
     }
@@ -174,6 +159,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! HomeTableViewCell
+        cell.titleLabel.text = tableData[indexPath.row].title
+        dateFormatter.dateFormat = "HH:mm"
+        cell.endTimeLabel.text = dateFormatter.string(from: tableData[indexPath.row].endTime)
+        dateFormatter.dateFormat = "dd MMM, yyyy"
+        cell.endDateLabel.text = dateFormatter.string(from: tableData[indexPath.row].endTime)
+        dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
         
         return cell
     }

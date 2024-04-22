@@ -62,7 +62,7 @@ class AddTaskViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        print("viewWillDisappear")
         NotificationCenter.default.post(name: Notification.Name("TaskDidAdd"), object: nil)
     }
     

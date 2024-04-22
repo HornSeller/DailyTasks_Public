@@ -8,6 +8,10 @@
 import UIKit
 
 class HomeTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var endTimeLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
