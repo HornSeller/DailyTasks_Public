@@ -109,8 +109,8 @@ class HomeViewController: UIViewController {
                     }
                 }
                 //print(tasks[0].title)
-                tasks.remove(at: 0)
-                tableData = tasks
+                SearchViewController.tasks = tasks
+                tableData = tasks.reversed()
                 tableView.reloadData()
                 let sortedTasks = tasks.sorted { (task1, task2) -> Bool in
                     return task1.endTime < task2.endTime
@@ -120,6 +120,27 @@ class HomeViewController: UIViewController {
                 
             }
         }
+    }
+    
+    func timeDifference(from startDate: Date, to endDate: Date) -> String {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day, .hour, .minute], from: startDate, to: endDate)
+        
+        if let days = components.day, let hours = components.hour, let minutes = components.minute {
+            if days > 0 {
+                return "\(days)d\(hours)h\(minutes)m"
+            } else if hours > 0 {
+                return "\(hours)h\(minutes)m"
+            } else if minutes > 0 {
+                return "\(minutes)m"
+            }
+        }
+        print("\(startDate), \(endDate)")
+        return "0m"
+    }
+    
+    @IBAction func searchButtonTouchUpInside(_ sender: UIButton) {
+        performSegue(withIdentifier: "searchSegue", sender: self)
     }
     
     @IBAction func addTaskButtonTouchUpInside(_sender: UIButton) {
@@ -139,12 +160,28 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! HomeCollectionViewCell
+        
+        cell.name = collectionData[indexPath.row].title
+        cell.priority = collectionData[indexPath.row].priority.rawValue
+        cell.time = timeDifference(from: collectionData[indexPath.row].startTime, to: .now)
+        
+        switch collectionData[indexPath.row].priority {
+        case .low:
+            cell.subView.backgroundColor = UIColor(hex: "74FF58", alpha: 1)
+        case .medium:
+            cell.subView.backgroundColor = UIColor(hex: "538BFF", alpha: 1)
+        case .high:
+            cell.subView.backgroundColor = UIColor(hex: "FF422D", alpha: 1)
+        }
         cell.titleLabel.text = collectionData[indexPath.row].title
         dateFormatter.dateFormat = "HH:mm"
         cell.endTimeLabel.text = "Time: \(dateFormatter.string(from: collectionData[indexPath.row].endTime))"
         dateFormatter.dateFormat = "dd MMM, yyyy"
         cell.endDateLabel.text = "Date: \(dateFormatter.string(from: collectionData[indexPath.row].endTime))"
         dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
+        cell.doneButtonAction = {
+            self.present(CompletedViewController.makeSelf(name: cell.name, priority: cell.priority, time: cell.time), animated: true)
+        }
         
         return cell
     }

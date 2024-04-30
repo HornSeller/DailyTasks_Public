@@ -70,20 +70,9 @@ class SignUpViewController: UIViewController {
                     }
                 case .success(let authResult):
                     let user = authResult.user
-                    var sampleTasks: [Task] = []
-                    sampleTasks.append(Task(title: "test", description: "test", startTime: dateFormatter.date(from: "24 Mar, 2024 00:00")!, endTime: dateFormatter.date(from: "24 Mar, 2024 00:00")!, priority: .high, category: .none, isCompleted: false))
                     let object: [String: Any] = [
                         "email": email,
-                        "tasks": sampleTasks.map { [
-                            "id": $0.id,
-                            "title": $0.title,
-                            "description": $0.description,
-                            "startTime": $0.startTime.description,
-                            "endTime": $0.endTime.description,
-                            "priority": $0.priority.rawValue,
-                            "category": $0.category.rawValue,
-                            "isCompleted": String($0.isCompleted)
-                        ] }
+                        "tasks": "",
                     ]
                     database.child("users").child(user.uid).setValue(object) { (error, ref) in
                         if let error = error {

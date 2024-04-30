@@ -25,7 +25,12 @@
 		048EB2512BC6EAE500A53A34 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048EB24F2BC6EAE500A53A34 /* HomeCollectionViewCell.xib */; };
 		048EB2552BC6F6C600A53A34 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048EB2532BC6F6C600A53A34 /* HomeTableViewCell.swift */; };
 		048EB2562BC6F6C600A53A34 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048EB2542BC6F6C600A53A34 /* HomeTableViewCell.xib */; };
+		04CD763A2BE0F30900A68AB2 /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD76382BE0F30900A68AB2 /* CompletedViewController.swift */; };
 		04D78F912BA3567B00746DB7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D78F902BA3567B00746DB7 /* SignUpViewController.swift */; };
+		04F97B242BD7B4100027C1AA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F97B232BD7B4100027C1AA /* SearchViewController.swift */; };
+		04F97B262BD7B41F0027C1AA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F97B252BD7B41F0027C1AA /* SearchViewModel.swift */; };
+		04F97B292BD7B9C80027C1AA /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F97B272BD7B9C80027C1AA /* SearchTableViewCell.swift */; };
+		04F97B2A2BD7B9C80027C1AA /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F97B282BD7B9C80027C1AA /* SearchTableViewCell.xib */; };
 		04FED26E2BA94A2A00FA95C2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FED26D2BA94A2A00FA95C2 /* LoginViewModel.swift */; };
 		04FED2702BA94A7900FA95C2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FED26F2BA94A7900FA95C2 /* Service.swift */; };
 		5D737C5DD9513F243C4B90E0 /* Pods_DailyTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B61F7503165183C5630B94C /* Pods_DailyTasks.framework */; };
@@ -53,7 +58,12 @@
 		048EB24F2BC6EAE500A53A34 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		048EB2532BC6F6C600A53A34 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		048EB2542BC6F6C600A53A34 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		04CD76382BE0F30900A68AB2 /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
 		04D78F902BA3567B00746DB7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		04F97B232BD7B4100027C1AA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		04F97B252BD7B41F0027C1AA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		04F97B272BD7B9C80027C1AA /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		04F97B282BD7B9C80027C1AA /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		04FED26D2BA94A2A00FA95C2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		04FED26F2BA94A7900FA95C2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0B61F7503165183C5630B94C /* Pods_DailyTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,9 +109,7 @@
 				041F23E62BA1883E000C90F6 /* Models */,
 				041F23E72BA1884F000C90F6 /* Views */,
 				041F23E82BA1885C000C90F6 /* ViewModels */,
-				041F23D32BA16F3D000C90F6 /* Main.storyboard */,
 				041F23D62BA16F3F000C90F6 /* Assets.xcassets */,
-				041F23D82BA16F40000C90F6 /* LaunchScreen.storyboard */,
 				041F23DB2BA16F40000C90F6 /* Info.plist */,
 				041F23E42BA17FEB000C90F6 /* GoogleService-Info.plist */,
 			);
@@ -129,6 +137,7 @@
 		041F23E72BA1884F000C90F6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04DAF9202BDF42D100811B6E /* Storyboard */,
 				042F10A52BC8E3230022C9B8 /* ViewControllers */,
 				048EB2522BC6F6B200A53A34 /* TableViews */,
 				048EB24D2BC6EAB200A53A34 /* CollectionViews */,
@@ -143,6 +152,7 @@
 				9AC41DE52BA3F75A000692A3 /* SignUpViewModel.swift */,
 				04FED26D2BA94A2A00FA95C2 /* LoginViewModel.swift */,
 				042F10A62BC91E500022C9B8 /* AddTaskViewModel.swift */,
+				04F97B252BD7B41F0027C1AA /* SearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -156,6 +166,8 @@
 				041F23EB2BA18891000C90F6 /* CalendarViewController.swift */,
 				041F23ED2BA188A0000C90F6 /* AnalysisViewController.swift */,
 				042F10A32BC7F3350022C9B8 /* AddTaskViewController.swift */,
+				04F97B232BD7B4100027C1AA /* SearchViewController.swift */,
+				04CD76382BE0F30900A68AB2 /* CompletedViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -174,8 +186,19 @@
 			children = (
 				048EB2532BC6F6C600A53A34 /* HomeTableViewCell.swift */,
 				048EB2542BC6F6C600A53A34 /* HomeTableViewCell.xib */,
+				04F97B272BD7B9C80027C1AA /* SearchTableViewCell.swift */,
+				04F97B282BD7B9C80027C1AA /* SearchTableViewCell.xib */,
 			);
 			path = TableViews;
+			sourceTree = "<group>";
+		};
+		04DAF9202BDF42D100811B6E /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				041F23D32BA16F3D000C90F6 /* Main.storyboard */,
+				041F23D82BA16F40000C90F6 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		7D5E9D8A4C5E892A1C7A7F88 /* Frameworks */ = {
@@ -259,6 +282,7 @@
 				041F23DA2BA16F40000C90F6 /* LaunchScreen.storyboard in Resources */,
 				041F23E52BA17FEB000C90F6 /* GoogleService-Info.plist in Resources */,
 				041F23D72BA16F3F000C90F6 /* Assets.xcassets in Resources */,
+				04F97B2A2BD7B9C80027C1AA /* SearchTableViewCell.xib in Resources */,
 				048EB2562BC6F6C600A53A34 /* HomeTableViewCell.xib in Resources */,
 				041F23D52BA16F3D000C90F6 /* Main.storyboard in Resources */,
 			);
@@ -316,11 +340,15 @@
 				041F23F62BA18A48000C90F6 /* LoginViewController.swift in Sources */,
 				04FED2702BA94A7900FA95C2 /* Service.swift in Sources */,
 				041F23EC2BA18891000C90F6 /* CalendarViewController.swift in Sources */,
+				04F97B242BD7B4100027C1AA /* SearchViewController.swift in Sources */,
 				041F23CE2BA16F3D000C90F6 /* AppDelegate.swift in Sources */,
 				042F10A42BC7F3350022C9B8 /* AddTaskViewController.swift in Sources */,
+				04F97B262BD7B41F0027C1AA /* SearchViewModel.swift in Sources */,
 				041F23D02BA16F3D000C90F6 /* SceneDelegate.swift in Sources */,
+				04CD763A2BE0F30900A68AB2 /* CompletedViewController.swift in Sources */,
 				04D78F912BA3567B00746DB7 /* SignUpViewController.swift in Sources */,
 				048EB2552BC6F6C600A53A34 /* HomeTableViewCell.swift in Sources */,
+				04F97B292BD7B9C80027C1AA /* SearchTableViewCell.swift in Sources */,
 				041F23F42BA189DE000C90F6 /* HomeViewModel.swift in Sources */,
 				042F10A72BC91E500022C9B8 /* AddTaskViewModel.swift in Sources */,
 				048EB2502BC6EAE500A53A34 /* HomeCollectionViewCell.swift in Sources */,
