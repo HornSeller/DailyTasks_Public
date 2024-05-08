@@ -76,7 +76,6 @@ class AddTaskViewController: UIViewController {
             return
         }
         
-        addTaskViewModel.id = UUID().uuidString
         addTaskViewModel.title = nameTextField.text ?? ""
         addTaskViewModel.category = categoryTextField.text ?? ""
         addTaskViewModel.priority = priorityTextField.text ?? ""

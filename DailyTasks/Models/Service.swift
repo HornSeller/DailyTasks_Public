@@ -8,6 +8,25 @@
 import Foundation
 import FirebaseAuth
 
+class Service {
+    static func timeDifference(from startDate: Date, to endDate: Date) -> String {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day, .hour, .minute], from: startDate, to: endDate)
+        
+        if let days = components.day, let hours = components.hour, let minutes = components.minute {
+            if days > 0 {
+                return "\(days)d\(hours)h\(minutes)m"
+            } else if hours > 0 {
+                return "\(hours)h\(minutes)m"
+            } else if minutes > 0 {
+                return "\(minutes)m"
+            }
+        }
+        print("\(startDate), \(endDate)")
+        return "0m"
+    }
+}
+
 enum AuthResult {
     case success(AuthDataResult)
     case failure(Error)

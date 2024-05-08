@@ -79,19 +79,13 @@ class HomeViewController: UIViewController {
         print("viewWillappear")
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        print("viewDidDisappear")
-    }
-    
     func getCollectionAndTableViewData() {
         if let currentUserUid = currentUserUid {
             homeViewModel.fetchUserData(uid: currentUserUid) { [self] children in
                 var tasks: [Task] = []
+                var completedTasks: [Task] = []
                 for child in children {
                     if let taskData = child.value as? [String: Any],
-                       let id = taskData["id"] as? String,
                        let title = taskData["title"] as? String,
                        let description = taskData["description"] as? String,
                        let startTimeString = taskData["startTime"] as? String,
@@ -104,11 +98,16 @@ class HomeViewController: UIViewController {
                        let category = Task.Category(rawValue: categoryRawValue),
                        let isCompletedString = taskData["isCompleted"] as? String,
                        let isCompleted = Bool(isCompletedString) {
-                        let task = Task(id: id, title: title, description: description, startTime: startTime, endTime: endTime, priority: priority, category: category, isCompleted: isCompleted)
-                        tasks.append(task)
+                        let task = Task(id: child.key, title: title, description: description, startTime: startTime, endTime: endTime, priority: priority, category: category, isCompleted: isCompleted)
+                        print(child.key)
+                        if !task.isCompleted {
+                            tasks.append(task)
+                        } else {
+                            completedTasks.append(task)
+                        }
                     }
                 }
-                //print(tasks[0].title)
+                print(tasks)
                 SearchViewController.tasks = tasks
                 tableData = tasks.reversed()
                 tableView.reloadData()
@@ -120,23 +119,6 @@ class HomeViewController: UIViewController {
                 
             }
         }
-    }
-    
-    func timeDifference(from startDate: Date, to endDate: Date) -> String {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day, .hour, .minute], from: startDate, to: endDate)
-        
-        if let days = components.day, let hours = components.hour, let minutes = components.minute {
-            if days > 0 {
-                return "\(days)d\(hours)h\(minutes)m"
-            } else if hours > 0 {
-                return "\(hours)h\(minutes)m"
-            } else if minutes > 0 {
-                return "\(minutes)m"
-            }
-        }
-        print("\(startDate), \(endDate)")
-        return "0m"
     }
     
     @IBAction func searchButtonTouchUpInside(_ sender: UIButton) {
@@ -163,7 +145,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         
         cell.name = collectionData[indexPath.row].title
         cell.priority = collectionData[indexPath.row].priority.rawValue
-        cell.time = timeDifference(from: collectionData[indexPath.row].startTime, to: .now)
+        cell.time = Service.timeDifference(from: collectionData[indexPath.row].startTime, to: .now)
         
         switch collectionData[indexPath.row].priority {
         case .low:
@@ -180,6 +162,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         cell.endDateLabel.text = "Date: \(dateFormatter.string(from: collectionData[indexPath.row].endTime))"
         dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
         cell.doneButtonAction = {
+            self.homeViewModel.updateTaskCompletionStatus(withId: self.collectionData[indexPath.row].id, isCompleted: true)
+            self.getCollectionAndTableViewData()
             self.present(CompletedViewController.makeSelf(name: cell.name, priority: cell.priority, time: cell.time), animated: true)
         }
         
@@ -202,6 +186,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         dateFormatter.dateFormat = "dd MMM, yyyy"
         cell.endDateLabel.text = dateFormatter.string(from: tableData[indexPath.row].endTime)
         dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
+        cell.viewDetailButtonAction = {
+            TaskDetailViewController.mainTask = self.tableData[indexPath.row]
+            self.performSegue(withIdentifier: "detailSegue", sender: self)
+        }
         
         return cell
     }

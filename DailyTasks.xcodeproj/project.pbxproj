@@ -25,6 +25,7 @@
 		048EB2512BC6EAE500A53A34 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048EB24F2BC6EAE500A53A34 /* HomeCollectionViewCell.xib */; };
 		048EB2552BC6F6C600A53A34 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048EB2532BC6F6C600A53A34 /* HomeTableViewCell.swift */; };
 		048EB2562BC6F6C600A53A34 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048EB2542BC6F6C600A53A34 /* HomeTableViewCell.xib */; };
+		04B541162BE4D92700A7D0CF /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B541152BE4D92700A7D0CF /* TaskDetailViewController.swift */; };
 		04CD763A2BE0F30900A68AB2 /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD76382BE0F30900A68AB2 /* CompletedViewController.swift */; };
 		04D78F912BA3567B00746DB7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D78F902BA3567B00746DB7 /* SignUpViewController.swift */; };
 		04F97B242BD7B4100027C1AA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F97B232BD7B4100027C1AA /* SearchViewController.swift */; };
@@ -58,6 +59,7 @@
 		048EB24F2BC6EAE500A53A34 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		048EB2532BC6F6C600A53A34 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		048EB2542BC6F6C600A53A34 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		04B541152BE4D92700A7D0CF /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		04CD76382BE0F30900A68AB2 /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
 		04D78F902BA3567B00746DB7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		04F97B232BD7B4100027C1AA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				042F10A32BC7F3350022C9B8 /* AddTaskViewController.swift */,
 				04F97B232BD7B4100027C1AA /* SearchViewController.swift */,
 				04CD76382BE0F30900A68AB2 /* CompletedViewController.swift */,
+				04B541152BE4D92700A7D0CF /* TaskDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B541162BE4D92700A7D0CF /* TaskDetailViewController.swift in Sources */,
 				041F23F62BA18A48000C90F6 /* LoginViewController.swift in Sources */,
 				04FED2702BA94A7900FA95C2 /* Service.swift in Sources */,
 				041F23EC2BA18891000C90F6 /* CalendarViewController.swift in Sources */,
@@ -509,6 +513,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NR9588Z67M;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyTasks/Info.plist;
@@ -517,6 +522,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -538,6 +544,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NR9588Z67M;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyTasks/Info.plist;
@@ -546,6 +553,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

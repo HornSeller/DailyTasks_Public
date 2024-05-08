@@ -15,13 +15,11 @@ final class AddTaskViewModel {
     var endTime = ""
     var category = ""
     var priority = ""
-    var id = UUID().uuidString
     
     private var database = Database.database().reference()
     
     func createTask(uid: String) {
         let task: [String: Any] = [
-            "id": id,
             "title": title,
             "description": description,
             "startTime": startTime,

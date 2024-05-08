@@ -99,13 +99,6 @@ class SearchViewController: UIViewController {
     @IBAction func backButtonTouchUpInside(_sender: UIButton) {
         dismiss(animated: true)
     }
-    
-    static func makeSelf() -> SearchViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        let rootViewController = storyboard.instantiateViewController(identifier: "SearchViewController") as SearchViewController
-        
-        return rootViewController
-    }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
