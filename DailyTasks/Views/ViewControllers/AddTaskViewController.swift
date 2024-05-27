@@ -30,7 +30,7 @@ class AddTaskViewController: UIViewController {
         
         descriptionTextView.layer.cornerRadius = 20
         
-        dateFormatter.dateFormat = "dd MMM, yyyy HH:ss"
+        dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
         
         pickerView1.delegate = self
         pickerView1.dataSource = self
@@ -76,14 +76,13 @@ class AddTaskViewController: UIViewController {
             return
         }
         
-        addTaskViewModel.title = nameTextField.text ?? ""
-        addTaskViewModel.category = categoryTextField.text ?? ""
-        addTaskViewModel.priority = priorityTextField.text ?? ""
-        addTaskViewModel.startTime = dateFormatter.string(from: startTimeDatePicker.date)
-        addTaskViewModel.endTime = dateFormatter.string(from: endTimeDatePicker.date)
-        addTaskViewModel.description = descriptionTextView.text
-        
-        addTaskViewModel.createTask(uid: userUid!)
+        let title = nameTextField.text ?? ""
+        let category = categoryTextField.text ?? ""
+        let priority = priorityTextField.text ?? ""
+        let startTime = dateFormatter.string(from: startTimeDatePicker.date)
+        let endTime = dateFormatter.string(from: endTimeDatePicker.date)
+        let description = descriptionTextView.text
+        addTaskViewModel.createTask(uid: userUid!, title: title, description: description ?? "", startTime: startTime, endTime: endTime, priority: priority, category: category)
     }
     
     @objc func startTimeDatePickerValueChanged() {

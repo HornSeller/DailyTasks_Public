@@ -6,9 +6,9 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var emailTf: UITextField!
@@ -16,12 +16,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTfBackgroundImage: UIImageView!
     @IBOutlet weak var passwordTfBackgroundImage: UIImageView!
     
-    var loginViewModel = LoginViewModel()
+    private var loginViewModel = LoginViewModel()
+    private var homeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        requestNotificationPermission()
         
         subView.layer.cornerRadius = 36
         
@@ -33,14 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         subView.addGestureRecognizer(tapGesture)
 
         if FirebaseAuth.Auth.auth().currentUser != nil {
-            self.performSegue(withIdentifier: "loginSegue", sender: self)
-            print(Auth.auth().currentUser?.uid)
-        }
-        
-        do {
-            //try FirebaseAuth.Auth.auth().signOut()
-        } catch {
-            
+            performSegue(withIdentifier: "loginSegue", sender: self)
         }
     }
     
@@ -48,23 +44,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         subView.endEditing(true)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == emailTf {
-            emailTfBackgroundImage.image = UIImage(named: "emailTf1")
-        } else {
-            passwordTfBackgroundImage.image = UIImage(named: "passwordTf1")
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == emailTf {
-            emailTfBackgroundImage.image = UIImage(named: "emailTf")
-        } else {
-            passwordTfBackgroundImage.image = UIImage(named: "passwordTf")
+    func requestNotificationPermission() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                print("Error requesting notification permission: \(error.localizedDescription)")
+                return
+            }
+            if granted {
+                print("Notification permission granted")
+            } else {
+                print("Notification permission denied")
+            }
         }
     }
     
@@ -95,7 +86,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 case .success(let result):
                     print(result)
                     let alert = UIAlertController(title: "Sign-in successful", message: "", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [self] _ in
+                        if let currentUid = Auth.auth().currentUser?.uid {
+                            homeViewModel.fetchNotifications(for: currentUid) { children in
+                                var notifications: [NotificationItem] = []
+                                var count = 0
+                                for child in children {
+                                    count += 1
+                                    if let notificationDict = child.value as? [String: Any],
+                                       let taskId = notificationDict["taskId"] as? String,
+                                       let title = notificationDict["title"] as? String,
+                                       let body = notificationDict["body"] as? String,
+                                       let triggerTimeString = notificationDict["triggerTime"] as? String,
+                                       let isActiveString = notificationDict["isActive"] as? String,
+                                       let isActive = Bool(isActiveString) {
+                                        
+                                        let dateFormatter = DateFormatter()
+                                        dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
+                                        
+                                        let triggerTime = dateFormatter.date(from: triggerTimeString)
+                                        let notification = NotificationItem(taskId: taskId, title: title, body: body, triggerTime: triggerTime!, isActive: isActive)
+                                        if notification.isActive {
+                                            notifications.append(notification)
+                                        }
+                                        
+                                    }
+                                    if count == children.count {
+                                        NotificationItem.scheduleNotifications(from: notifications)
+                                    }
+                                }
+                            }
+                        }
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
                     }))
                     self.present(alert, animated: true)
@@ -116,4 +137,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signUpBtnTapped(_ sender: UIButton) {
         self.navigationController?.pushViewController(SignUpViewController.makeSelf(), animated: true)
     }
+}
+
+// MARK: - UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == emailTf {
+            emailTfBackgroundImage.image = UIImage(named: "emailTf1")
+        } else {
+            passwordTfBackgroundImage.image = UIImage(named: "passwordTf1")
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == emailTf {
+            emailTfBackgroundImage.image = UIImage(named: "emailTf")
+        } else {
+            passwordTfBackgroundImage.image = UIImage(named: "passwordTf")
+        }
+    }
+    
 }

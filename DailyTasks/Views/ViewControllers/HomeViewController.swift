@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
 class HomeViewController: UIViewController {
     
@@ -21,14 +22,14 @@ class HomeViewController: UIViewController {
     private var collectionData: [Task] = []
     private let database = Database.database().reference()
     private let dateFormatter = DateFormatter()
-    private let currentUserUid = Auth.auth().currentUser?.uid
+    private let currentUid = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(UserDefaults.standard.value(forKey: "ScheduledNotificationIDs"))
         dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
         
-        database.child("users").child(currentUserUid!).observeSingleEvent(of: .value) { snapshot in
+        database.child("users").child(currentUid!).observeSingleEvent(of: .value) { snapshot in
             guard let userData = snapshot.value as? [String: Any] else {
                 print("Error: Unable to fetch user data")
                 return
@@ -36,15 +37,15 @@ class HomeViewController: UIViewController {
             
             self.emailLabel.text = userData["email"] as? String ?? ""
         }
-        
-        //getCollectionAndTableViewData()
-        
+                
         userButton.showsMenuAsPrimaryAction = true
         userButton.menu = UIMenu(title: "", options: .displayInline, children: [
             UIAction(title: "Sign out", handler: { (_) in
                 let alert = UIAlertController(title: "Do you want to sign out this user?", message: "", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "No", style: .cancel))
                 alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
+                    NotificationItem.removeAllScheduledNotifications()
+                    UserDefaults.standard.removeObject(forKey: "ScheduledNotificationIDs")
                     do {
                         try Auth.auth().signOut()
                         self.tabBarController?.dismiss(animated: true)
@@ -80,10 +81,9 @@ class HomeViewController: UIViewController {
     }
     
     func getCollectionAndTableViewData() {
-        if let currentUserUid = currentUserUid {
+        if let currentUserUid = currentUid {
             homeViewModel.fetchUserData(uid: currentUserUid) { [self] children in
                 var tasks: [Task] = []
-                var completedTasks: [Task] = []
                 for child in children {
                     if let taskData = child.value as? [String: Any],
                        let title = taskData["title"] as? String,
@@ -102,8 +102,6 @@ class HomeViewController: UIViewController {
                         print(child.key)
                         if !task.isCompleted {
                             tasks.append(task)
-                        } else {
-                            completedTasks.append(task)
                         }
                     }
                 }
@@ -129,8 +127,40 @@ class HomeViewController: UIViewController {
         present(AddTaskViewController.makeSelf(), animated: true)
     }
     
+    @IBAction func viewCompletedTasksButtonTouchUpInside(_ sender: UIButton) {
+        performSegue(withIdentifier: "completedSegue", sender: self)
+    }
+    
     @objc func taskDidAddNotification() {
         getCollectionAndTableViewData()
+        homeViewModel.fetchNotifications(for: currentUid!) { children in
+            var notifications: [NotificationItem] = []
+            var count = 0
+            for child in children {
+                count += 1
+                if let notificationDict = child.value as? [String: Any],
+                   let taskId = notificationDict["taskId"] as? String,
+                   let title = notificationDict["title"] as? String,
+                   let body = notificationDict["body"] as? String,
+                   let triggerTimeString = notificationDict["triggerTime"] as? String,
+                   let isActiveString = notificationDict["isActive"] as? String,
+                   let isActive = Bool(isActiveString) {
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
+                    
+                    let triggerTime = dateFormatter.date(from: triggerTimeString)
+                    let notification = NotificationItem(taskId: taskId, title: title, body: body, triggerTime: triggerTime!, isActive: isActive)
+                    if notification.isActive {
+                        notifications.append(notification)
+                    }
+                    
+                }
+                if count == children.count {
+                    NotificationItem.scheduleNotifications(from: notifications)
+                }
+            }
+        }
     }
 }
 
@@ -162,7 +192,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         cell.endDateLabel.text = "Date: \(dateFormatter.string(from: collectionData[indexPath.row].endTime))"
         dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
         cell.doneButtonAction = {
-            self.homeViewModel.updateTaskCompletionStatus(withId: self.collectionData[indexPath.row].id, isCompleted: true)
+            self.homeViewModel.updateTaskCompletionStatus(withId: self.collectionData[indexPath.row].id, setStatus: true)
             self.getCollectionAndTableViewData()
             self.present(CompletedViewController.makeSelf(name: cell.name, priority: cell.priority, time: cell.time), animated: true)
         }
@@ -188,6 +218,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
         cell.viewDetailButtonAction = {
             TaskDetailViewController.mainTask = self.tableData[indexPath.row]
+            TaskDetailViewController.isCompletedTask = false
+            TaskDetailViewController.fromCalenderViewController = false
             self.performSegue(withIdentifier: "detailSegue", sender: self)
         }
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041DDCA52BFDEC4100B0D24B /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041DDCA42BFDEC4100B0D24B /* Notification.swift */; };
 		041F23CE2BA16F3D000C90F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F23CD2BA16F3D000C90F6 /* AppDelegate.swift */; };
 		041F23D02BA16F3D000C90F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F23CF2BA16F3D000C90F6 /* SceneDelegate.swift */; };
 		041F23D52BA16F3D000C90F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041F23D32BA16F3D000C90F6 /* Main.storyboard */; };
@@ -28,6 +29,11 @@
 		04B541162BE4D92700A7D0CF /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B541152BE4D92700A7D0CF /* TaskDetailViewController.swift */; };
 		04CD763A2BE0F30900A68AB2 /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD76382BE0F30900A68AB2 /* CompletedViewController.swift */; };
 		04D78F912BA3567B00746DB7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D78F902BA3567B00746DB7 /* SignUpViewController.swift */; };
+		04DCE3E72BFC99140026E4DC /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DCE3E52BFC99140026E4DC /* CalendarTableViewCell.swift */; };
+		04DCE3E82BFC99140026E4DC /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DCE3E62BFC99140026E4DC /* CalendarTableViewCell.xib */; };
+		04ECA8AB2BF1ED5F00AC0BBC /* CompletedTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ECA8AA2BF1ED5F00AC0BBC /* CompletedTasksViewController.swift */; };
+		04ECA8AE2BF1F03D00AC0BBC /* CompletedTasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ECA8AC2BF1F03D00AC0BBC /* CompletedTasksTableViewCell.swift */; };
+		04ECA8AF2BF1F03D00AC0BBC /* CompletedTasksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04ECA8AD2BF1F03D00AC0BBC /* CompletedTasksTableViewCell.xib */; };
 		04F97B242BD7B4100027C1AA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F97B232BD7B4100027C1AA /* SearchViewController.swift */; };
 		04F97B262BD7B41F0027C1AA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F97B252BD7B41F0027C1AA /* SearchViewModel.swift */; };
 		04F97B292BD7B9C80027C1AA /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F97B272BD7B9C80027C1AA /* SearchTableViewCell.swift */; };
@@ -39,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		041DDCA42BFDEC4100B0D24B /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		041F23CA2BA16F3D000C90F6 /* DailyTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		041F23CD2BA16F3D000C90F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		041F23CF2BA16F3D000C90F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +69,11 @@
 		04B541152BE4D92700A7D0CF /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		04CD76382BE0F30900A68AB2 /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
 		04D78F902BA3567B00746DB7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		04DCE3E52BFC99140026E4DC /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		04DCE3E62BFC99140026E4DC /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
+		04ECA8AA2BF1ED5F00AC0BBC /* CompletedTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTasksViewController.swift; sourceTree = "<group>"; };
+		04ECA8AC2BF1F03D00AC0BBC /* CompletedTasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTasksTableViewCell.swift; sourceTree = "<group>"; };
+		04ECA8AD2BF1F03D00AC0BBC /* CompletedTasksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompletedTasksTableViewCell.xib; sourceTree = "<group>"; };
 		04F97B232BD7B4100027C1AA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		04F97B252BD7B41F0027C1AA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		04F97B272BD7B9C80027C1AA /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +144,7 @@
 			children = (
 				041F23EF2BA188C1000C90F6 /* Task.swift */,
 				04FED26F2BA94A7900FA95C2 /* Service.swift */,
+				041DDCA42BFDEC4100B0D24B /* Notification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,6 +184,7 @@
 				04F97B232BD7B4100027C1AA /* SearchViewController.swift */,
 				04CD76382BE0F30900A68AB2 /* CompletedViewController.swift */,
 				04B541152BE4D92700A7D0CF /* TaskDetailViewController.swift */,
+				04ECA8AA2BF1ED5F00AC0BBC /* CompletedTasksViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -191,6 +205,10 @@
 				048EB2542BC6F6C600A53A34 /* HomeTableViewCell.xib */,
 				04F97B272BD7B9C80027C1AA /* SearchTableViewCell.swift */,
 				04F97B282BD7B9C80027C1AA /* SearchTableViewCell.xib */,
+				04ECA8AC2BF1F03D00AC0BBC /* CompletedTasksTableViewCell.swift */,
+				04ECA8AD2BF1F03D00AC0BBC /* CompletedTasksTableViewCell.xib */,
+				04DCE3E52BFC99140026E4DC /* CalendarTableViewCell.swift */,
+				04DCE3E62BFC99140026E4DC /* CalendarTableViewCell.xib */,
 			);
 			path = TableViews;
 			sourceTree = "<group>";
@@ -282,11 +300,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				048EB2512BC6EAE500A53A34 /* HomeCollectionViewCell.xib in Resources */,
+				04DCE3E82BFC99140026E4DC /* CalendarTableViewCell.xib in Resources */,
 				041F23DA2BA16F40000C90F6 /* LaunchScreen.storyboard in Resources */,
 				041F23E52BA17FEB000C90F6 /* GoogleService-Info.plist in Resources */,
 				041F23D72BA16F3F000C90F6 /* Assets.xcassets in Resources */,
 				04F97B2A2BD7B9C80027C1AA /* SearchTableViewCell.xib in Resources */,
 				048EB2562BC6F6C600A53A34 /* HomeTableViewCell.xib in Resources */,
+				04ECA8AF2BF1F03D00AC0BBC /* CompletedTasksTableViewCell.xib in Resources */,
 				041F23D52BA16F3D000C90F6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +363,7 @@
 				04B541162BE4D92700A7D0CF /* TaskDetailViewController.swift in Sources */,
 				041F23F62BA18A48000C90F6 /* LoginViewController.swift in Sources */,
 				04FED2702BA94A7900FA95C2 /* Service.swift in Sources */,
+				04ECA8AB2BF1ED5F00AC0BBC /* CompletedTasksViewController.swift in Sources */,
 				041F23EC2BA18891000C90F6 /* CalendarViewController.swift in Sources */,
 				04F97B242BD7B4100027C1AA /* SearchViewController.swift in Sources */,
 				041F23CE2BA16F3D000C90F6 /* AppDelegate.swift in Sources */,
@@ -350,9 +371,12 @@
 				04F97B262BD7B41F0027C1AA /* SearchViewModel.swift in Sources */,
 				041F23D02BA16F3D000C90F6 /* SceneDelegate.swift in Sources */,
 				04CD763A2BE0F30900A68AB2 /* CompletedViewController.swift in Sources */,
+				04DCE3E72BFC99140026E4DC /* CalendarTableViewCell.swift in Sources */,
 				04D78F912BA3567B00746DB7 /* SignUpViewController.swift in Sources */,
 				048EB2552BC6F6C600A53A34 /* HomeTableViewCell.swift in Sources */,
 				04F97B292BD7B9C80027C1AA /* SearchTableViewCell.swift in Sources */,
+				04ECA8AE2BF1F03D00AC0BBC /* CompletedTasksTableViewCell.swift in Sources */,
+				041DDCA52BFDEC4100B0D24B /* Notification.swift in Sources */,
 				041F23F42BA189DE000C90F6 /* HomeViewModel.swift in Sources */,
 				042F10A72BC91E500022C9B8 /* AddTaskViewModel.swift in Sources */,
 				048EB2502BC6EAE500A53A34 /* HomeCollectionViewCell.swift in Sources */,

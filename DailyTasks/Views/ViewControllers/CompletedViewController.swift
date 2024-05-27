@@ -27,6 +27,11 @@ class CompletedViewController: UIViewController {
         priorityLabel.text = priority
         timeLabel.text = time
     }
+    
+    @IBAction func backButtonTouchUpInside(_sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name("BackHomeButtonTapped"), object: nil)
+        dismiss(animated: true)
+    }
 
     static func makeSelf(name: String, priority: String, time: String) -> CompletedViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
