@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var addTaskButton: UIButton!
     
+    private let activityIndicatorView = UIActivityIndicatorView.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
     private let homeViewModel = HomeViewModel()
     private var tableData: [Task] = []
     private var collectionData: [Task] = []
@@ -26,8 +27,15 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(UserDefaults.standard.value(forKey: "ScheduledNotificationIDs"))
+        
         dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
+        
+        activityIndicatorView.transform = CGAffineTransform(scaleX: 2, y: 2)
+        activityIndicatorView.color = .gray
+        activityIndicatorView.center = CGPoint.init(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.startAnimating()
+        view.isUserInteractionEnabled = false
         
         database.child("users").child(currentUid!).observeSingleEvent(of: .value) { snapshot in
             guard let userData = snapshot.value as? [String: Any] else {
@@ -35,6 +43,8 @@ class HomeViewController: UIViewController {
                 return
             }
             
+            self.activityIndicatorView.stopAnimating()
+            self.view.isUserInteractionEnabled = true
             self.emailLabel.text = userData["email"] as? String ?? ""
         }
                 
@@ -81,6 +91,7 @@ class HomeViewController: UIViewController {
     }
     
     func getCollectionAndTableViewData() {
+        
         if let currentUserUid = currentUid {
             homeViewModel.fetchUserData(uid: currentUserUid) { [self] children in
                 var tasks: [Task] = []
@@ -114,7 +125,7 @@ class HomeViewController: UIViewController {
                 }
                 collectionData = sortedTasks
                 collectionView.reloadData()
-                
+                activityIndicatorView.stopAnimating()
             }
         }
     }

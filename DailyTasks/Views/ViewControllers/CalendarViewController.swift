@@ -73,6 +73,7 @@ class CalendarViewController: UIViewController {
                             filterTasksAndReloadTableView(fromTasks: tasks, calendarView: calendarView)
                         } else {
                             tableViewData = []
+                            totalTasksLabel.text = "Total: 0 tasks"
                             tableView.reloadData()
                         }
                     }
@@ -85,7 +86,6 @@ class CalendarViewController: UIViewController {
         tableViewData = []
         let calendar = Calendar.current
         var count = 0
-        totalTasksLabel.text = "Total: 0 tasks"
         for task in self.tasks {
             count += 1
             let startOfStartDay = calendar.startOfDay(for: task.startTime)
@@ -119,7 +119,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             TaskDetailViewController.mainTask = self.tableViewData[indexPath.row]
             TaskDetailViewController.isCompletedTask = false
             TaskDetailViewController.fromCalenderViewController = true
-            self.performSegue(withIdentifier: "detailSegue2", sender: self)
+            self.navigationController?.pushViewController(TaskDetailViewController.makeSelf(), animated: true)
         }
         
         return cell

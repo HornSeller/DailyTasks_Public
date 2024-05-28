@@ -64,7 +64,9 @@ class TaskDetailViewController: UIViewController {
     }
     
     @objc func backHomeButtonTappedNotification() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        if TaskDetailViewController.isCompletedTask || TaskDetailViewController.fromCalenderViewController {
+            self.navigationController?.popViewController(animated: true)
+        } else {
             self.dismiss(animated: true)
         }
     }

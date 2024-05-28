@@ -76,6 +76,17 @@ struct NotificationItem {
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: identifiers)
         center.removeDeliveredNotifications(withIdentifiers: identifiers)
+        var scheduledNotificationIDs = UserDefaults.standard.array(forKey: "ScheduledNotificationIDs") as? [String] ?? []
+        var indexToDelete: [Int] = []
+        for i in 0 ..< identifiers.count {
+            if scheduledNotificationIDs.contains(identifiers[i]) {
+                indexToDelete.append(i)
+            }
+        }
+        for index in indexToDelete.reversed() {
+            scheduledNotificationIDs.remove(at: index)
+        }
+        UserDefaults.standard.setValue(scheduledNotificationIDs, forKey: "ScheduledNotificationIDs")
     }
     
     static func removeAllScheduledNotifications() {

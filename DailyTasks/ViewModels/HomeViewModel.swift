@@ -49,9 +49,17 @@ final class HomeViewModel {
     
     private func updateNotificationsStatus(for uid: String, taskId: String, with status: Bool) {
         fetchNotifications(for: uid) { snapshots in
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMM, yyyy HH:mm"
+            
+            var notifications: [NotificationItem] = []
+            var identifiers: [String] = []
             let filteredSnapshots = self.filterNotifications(with: taskId, from: snapshots)
             
+            var count = 0
             for snapshot in filteredSnapshots {
+                count += 1
                 let notificationRef = snapshot.ref
                 notificationRef.updateChildValues(["isActive": "\(status)"]) { error, _ in
                     if let error = error {
@@ -60,7 +68,38 @@ final class HomeViewModel {
                         print("Notification updated successfully.")
                     }
                 }
+                if status {
+                    if let notificationDict = snapshot.value as? [String: Any],
+                       let taskId = notificationDict["taskId"] as? String,
+                       let title = notificationDict["title"] as? String,
+                       let body = notificationDict["body"] as? String,
+                       let triggerTimeString = notificationDict["triggerTime"] as? String,
+                       let isActiveString = notificationDict["isActive"] as? String,
+                       let isActive = Bool(isActiveString) {
+                        
+                        let triggerTime = dateFormatter.date(from: triggerTimeString)
+                        
+                        notifications.append(NotificationItem(taskId: taskId, title: title, body: body, triggerTime: triggerTime!, isActive: isActive))
+                    }
+                    if count == filteredSnapshots.count {
+                        NotificationItem.scheduleNotifications(from: notifications)
+                    }
+                }
+                else {
+                    if let notificationData = snapshot.value as? [String: Any],
+                       let taskIdValue = notificationData["taskId"] as? String,
+                       taskIdValue == taskId,
+                       let triggerTimeString = notificationData["triggerTime"] as? String,
+                       let triggerTime = dateFormatter.date(from: triggerTimeString) {
+                        let identifier = "\(taskId)-\(triggerTime.timeIntervalSince1970)"
+                        identifiers.append(identifier)
+                    }
+                    if count == filteredSnapshots.count {
+                        NotificationItem.deleteScheduledNotifications(identifiers: identifiers)
+                    }
+                }
             }
+            
         }
     }
 
@@ -116,18 +155,6 @@ final class HomeViewModel {
                     } else {
                         print("Notification deleted successfully!")
                         NotificationItem.deleteScheduledNotifications(identifiers: identifiers)
-                        var scheduledNotificationIDs = UserDefaults.standard.array(forKey: "ScheduledNotificationIDs") as? [String] ?? []
-                        var indexToDelete: [Int] = []
-                        for i in 0 ..< identifiers.count {
-                            if scheduledNotificationIDs.contains(identifiers[i]) {
-                                indexToDelete.append(i)
-                            }
-                        }
-                        for index in indexToDelete.reversed() {
-                            scheduledNotificationIDs.remove(at: index)
-                        }
-                        UserDefaults.standard.setValue(scheduledNotificationIDs, forKey: "ScheduledNotificationIDs")
-                        print(UserDefaults.standard.array(forKey: "ScheduledNotificationIDs"))
                     }
                 }
             }
