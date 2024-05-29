@@ -118,8 +118,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.viewDetailButtonAction = {
             TaskDetailViewController.mainTask = self.tableViewData[indexPath.row]
             TaskDetailViewController.isCompletedTask = false
-            TaskDetailViewController.fromCalenderViewController = true
-            self.navigationController?.pushViewController(TaskDetailViewController.makeSelf(), animated: true)
+            //TaskDetailViewController.fromCalenderViewController = true
+            self.performSegue(withIdentifier: "detailSegue2", sender: self)
         }
         
         return cell

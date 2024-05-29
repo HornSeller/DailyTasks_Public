@@ -87,7 +87,6 @@ extension CompletedTasksViewController: UITableViewDelegate, UITableViewDataSour
         cell.viewDetailButtonAction = {
             TaskDetailViewController.mainTask = self.tableData[indexPath.row]
             TaskDetailViewController.isCompletedTask = true
-            TaskDetailViewController.fromCalenderViewController = false
             self.navigationController?.pushViewController(TaskDetailViewController.makeSelf(), animated: true)
         }
         return cell

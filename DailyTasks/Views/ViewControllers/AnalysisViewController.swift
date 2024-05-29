@@ -51,7 +51,6 @@ class AnalysisViewController: UIViewController {
         
         startDatePicker.maximumDate = endDatePicker.date
         endDatePicker.minimumDate = startDatePicker.date
-        endDatePicker.maximumDate = Date()
         
         startDatePicker.addTarget(self, action: #selector(datePicker1ValueChanged), for: .valueChanged)
         endDatePicker.addTarget(self, action: #selector(datePicker2ValueChanged), for: .valueChanged)
@@ -180,7 +179,7 @@ class AnalysisViewController: UIViewController {
                         doneTasksLabel.text = String(doneTasks)
                         pendingTasksLabel.text = String(pendingTasks)
                         if noneDoneTasks + nonePendingTasks != 0 {
-                            noneCategoryProgress.progress = Float(noneDoneTasks / (noneDoneTasks + nonePendingTasks))
+                            noneCategoryProgress.progress = Float(noneDoneTasks) / Float(noneDoneTasks + nonePendingTasks)
                             noneCategoryRatio.text = "\(noneDoneTasks)/\(noneDoneTasks + nonePendingTasks)"
                             noneCategoryPercent.text = "(\(noneDoneTasks * 100 / (noneDoneTasks + nonePendingTasks))%)"
                         } else {
@@ -189,7 +188,7 @@ class AnalysisViewController: UIViewController {
                             noneCategoryPercent.text = "(0%)"
                         }
                         if workDoneTasks + workPendingTasks != 0 {
-                            workCategoryProgress.progress = Float(workDoneTasks / (workDoneTasks + workPendingTasks))
+                            workCategoryProgress.progress = Float(workDoneTasks) / Float(workDoneTasks + workPendingTasks)
                             workCategoryRatio.text = "\(workDoneTasks)/\(workDoneTasks + workPendingTasks)"
                             workCategoryPercent.text = "(\(workDoneTasks * 100 / (workDoneTasks + workPendingTasks))%)"
                         } else {
@@ -198,7 +197,7 @@ class AnalysisViewController: UIViewController {
                             workCategoryPercent.text = "(0%)"
                         }
                         if personalDoneTasks + personalPendingTasks != 0 {
-                            personalCategoryProgress.progress = Float(personalDoneTasks / (personalDoneTasks + personalPendingTasks))
+                            personalCategoryProgress.progress = Float(personalDoneTasks) / Float(personalDoneTasks + personalPendingTasks)
                             personalCategoryRatio.text = "\(personalDoneTasks)/\(personalDoneTasks + personalPendingTasks)"
                             personalCategoryPercent.text = "(\(personalDoneTasks * 100 / (personalDoneTasks + personalPendingTasks))%)"
                         } else {
@@ -207,7 +206,7 @@ class AnalysisViewController: UIViewController {
                             personalCategoryPercent.text = "(0%)"
                         }
                         if familyDoneTasks + familyPendingTasks != 0 {
-                            familyCategoryProgress.progress = Float(familyDoneTasks / (familyDoneTasks + familyPendingTasks))
+                            familyCategoryProgress.progress = Float(familyDoneTasks) / Float(familyDoneTasks + familyPendingTasks)
                             familyCategoryRatio.text = "\(familyDoneTasks)/\(familyDoneTasks + familyPendingTasks)"
                             familyCategoryPercent.text = "(\(familyDoneTasks * 100 / (familyDoneTasks + familyPendingTasks))%)"
                         } else {

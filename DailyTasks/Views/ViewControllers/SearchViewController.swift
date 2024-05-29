@@ -34,6 +34,9 @@ class SearchViewController: UIViewController {
         tableView.register(UINib(nibName: "SearchTableViewCell", bundle: .main), forCellReuseIdentifier: "searchTableCell")
         tableView.rowHeight = 0.21374 * view.frame.width - 1
         
+        tableViewData = SearchViewController.tasks
+        tableView.reloadData()
+        
         searchBar.isEnabled = false
         searchBar.placeholder = "Choose search type..."
         

@@ -27,7 +27,6 @@ class TaskDetailViewController: UIViewController {
     private let homeViewModel = HomeViewModel()
     static var mainTask: Task?
     static var isCompletedTask: Bool!
-    static var fromCalenderViewController: Bool!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +63,7 @@ class TaskDetailViewController: UIViewController {
     }
     
     @objc func backHomeButtonTappedNotification() {
-        if TaskDetailViewController.isCompletedTask || TaskDetailViewController.fromCalenderViewController {
+        if TaskDetailViewController.isCompletedTask {
             self.navigationController?.popViewController(animated: true)
         } else {
             self.dismiss(animated: true)
@@ -93,7 +92,7 @@ class TaskDetailViewController: UIViewController {
         } else {
             let alert = UIAlertController(title: "Success", message: "Check it out!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-                if TaskDetailViewController.isCompletedTask || TaskDetailViewController.fromCalenderViewController {
+                if TaskDetailViewController.isCompletedTask {
                     self.navigationController?.popViewController(animated: true)
                 } else {
                     self.dismiss(animated: true)
@@ -114,7 +113,7 @@ class TaskDetailViewController: UIViewController {
             homeViewModel.deleteTask(withId: TaskDetailViewController.mainTask!.id)
             markDoneButton.isHidden = true
             deleteButton.isHidden = true
-            if TaskDetailViewController.isCompletedTask || TaskDetailViewController.fromCalenderViewController {
+            if TaskDetailViewController.isCompletedTask {
                 self.navigationController?.popViewController(animated: true)
             } else {
                 self.dismiss(animated: true)
@@ -124,7 +123,7 @@ class TaskDetailViewController: UIViewController {
     }
     
     @IBAction func backButtonTouchUpInside(_sender: UIButton) {
-        if TaskDetailViewController.isCompletedTask || TaskDetailViewController.fromCalenderViewController {
+        if TaskDetailViewController.isCompletedTask {
             navigationController?.popViewController(animated: true)
         } else {
             dismiss(animated: true)

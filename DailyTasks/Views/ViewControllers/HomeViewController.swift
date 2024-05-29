@@ -230,7 +230,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.viewDetailButtonAction = {
             TaskDetailViewController.mainTask = self.tableData[indexPath.row]
             TaskDetailViewController.isCompletedTask = false
-            TaskDetailViewController.fromCalenderViewController = false
             self.performSegue(withIdentifier: "detailSegue", sender: self)
         }
         
