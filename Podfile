@@ -9,5 +9,19 @@ target 'DailyTasks' do
 
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'IQKeyboardManagerSwift'
+pod 'KDCircularProgress'
+pod 'CVCalendar', '~> 1.7.0'
+
+post_install do |installer|
+    installer.generated_projects.each do |project|
+        project.targets.each do |target|
+            target.build_configurations.each do |config|
+                config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '16.4'
+            end
+        end
+    end
+end
 
 end

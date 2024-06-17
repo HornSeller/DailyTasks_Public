@@ -8,11 +8,6 @@
 import Foundation
 import FirebaseAuth
 
-enum AuthResult {
-    case success(AuthDataResult)
-    case failure(Error)
-}
-
 final class LoginViewModel {
     var email: String = ""
     var password: String = ""
