@@ -82,7 +82,13 @@ class AddTaskViewController: UIViewController {
         let startTime = dateFormatter.string(from: startTimeDatePicker.date)
         let endTime = dateFormatter.string(from: endTimeDatePicker.date)
         let description = descriptionTextView.text
-        addTaskViewModel.createTask(uid: userUid!, title: title, description: description ?? "", startTime: startTime, endTime: endTime, priority: priority, category: category)
+        addTaskViewModel.createTask(uid: userUid!, title: title, description: description ?? "", startTime: startTime, endTime: endTime, priority: priority, category: category) {
+            let alert = UIAlertController(title: "Success", message: "Check it out!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.dismiss(animated: true)
+            }))
+            self.present(alert, animated: true)
+        }
     }
     
     @objc func startTimeDatePickerValueChanged() {

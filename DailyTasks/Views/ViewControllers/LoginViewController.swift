@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTfBackgroundImage: UIImageView!
     @IBOutlet weak var passwordTfBackgroundImage: UIImageView!
     
+    private let activityIndicatorView = UIActivityIndicatorView.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
     private var loginViewModel = LoginViewModel()
     private var homeViewModel = HomeViewModel()
     
@@ -25,6 +26,10 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         requestNotificationPermission()
+        activityIndicatorView.transform = CGAffineTransform(scaleX: 2, y: 2)
+        activityIndicatorView.color = .gray
+        activityIndicatorView.center = CGPoint.init(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
+        view.addSubview(activityIndicatorView)
         
         subView.layer.cornerRadius = 36
         
@@ -61,12 +66,17 @@ class LoginViewController: UIViewController {
     
     @IBAction func signInBtnTapped(_ sender: UIButton) {
         if let email = emailTf.text, let password = passwordTf.text, !email.isEmpty, !password.isEmpty {
+            activityIndicatorView.startAnimating()
+            view.isUserInteractionEnabled = false
             loginViewModel.email = email
             loginViewModel.password = password
             loginViewModel.signIn { [self] authResult in
                 print("\(loginViewModel.email) \(loginViewModel.password)")
                 switch authResult {
                 case .failure(let error as NSError):
+                    activityIndicatorView.stopAnimating()
+                    view.isUserInteractionEnabled = true
+                    print(error)
                     switch error.code {
                     case AuthErrorCode.invalidEmail.rawValue:
                         presentErrorAlert(message: "Invalid email format")
@@ -81,9 +91,11 @@ class LoginViewController: UIViewController {
                     case AuthErrorCode.networkError.rawValue:
                         presentErrorAlert(message: "Network error")
                     default:
-                        presentErrorAlert(message: "Unknown error")
+                        presentErrorAlert(message: "Email or password is not valid")
                     }
                 case .success(let result):
+                    activityIndicatorView.stopAnimating()
+                    view.isUserInteractionEnabled = true
                     print(result)
                     let alert = UIAlertController(title: "Sign-in successful", message: "", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [self] _ in

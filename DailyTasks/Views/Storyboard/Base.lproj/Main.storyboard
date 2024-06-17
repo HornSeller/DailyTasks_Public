@@ -571,7 +571,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKa-zq-9KH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1415" y="1615"/>
+            <point key="canvasLocation" x="-1416" y="1651"/>
         </scene>
         <!--Task Detail-->
         <scene sceneID="tFs-MH-xN2">
@@ -1391,6 +1391,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="G2J-eM-IXd" id="Odb-Kl-L9p"/>
                         <outlet property="confirmPasswordTf" destination="7OQ-pz-3Sk" id="rXa-af-azg"/>
                         <outlet property="confirmPasswordTfBackgroundImage" destination="CfQ-t2-syT" id="NTw-Gj-hqR"/>
                         <outlet property="emailTf" destination="uPV-S2-OVp" id="gBy-mh-Zkv"/>

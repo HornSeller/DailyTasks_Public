@@ -12,7 +12,7 @@ final class AddTaskViewModel {
     
     private var database = Database.database().reference()
     
-    func createTask(uid: String, title: String, description: String, startTime: String, endTime: String, priority: String, category: String) {
+    func createTask(uid: String, title: String, description: String, startTime: String, endTime: String, priority: String, category: String, completion: @escaping () -> Void) {
         let task: [String: Any] = [
             "title": title,
             "description": description,
@@ -53,6 +53,7 @@ final class AddTaskViewModel {
             if taskDuration > 30 * 60 {
                 self.addNotification(for: taskRef.key ?? "", uid: uid, title: "Task Reminder", body: "30 minutes left for task [\(title)]!", triggerTime: thirtyMinutesBeforeEnd)
             }
+            completion()
         }
     }
     private func addNotification(for taskId: String, uid: String, title: String, body: String, triggerTime: Date) {
